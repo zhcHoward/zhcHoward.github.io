@@ -10,7 +10,10 @@ title: Home
       <h3 class="am-panel-title am-fl">
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </h3>
-      <small class="am-fr">{{ post.date | date_to_string }}</small>
+      <div class="am-fr">
+        <small>{{ post.date | date_to_string }}</small>
+      </div>
+      
     </div>
     <div class="am-panel-bd post-content">
       {{ post.content }}
