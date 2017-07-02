@@ -7,17 +7,18 @@
     max-width: 100.0rem;
 }
 
-/*a {
-  text-decoration: none !important; 
-}*/
-
 /*
  ***************
  * header
  ***************
  */
-header small {
-    line-height: 4.166667rem;
+header .tagline {
+  height: 4.166667rem;
+  line-height: 4.166667rem;
+}
+
+header .tagline small {
+  vertical-align: baseline;
 }
 
 /*

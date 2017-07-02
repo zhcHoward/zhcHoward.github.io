@@ -5,20 +5,27 @@
 
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<!--   <meta name="description" content="zhcHoward's blog">
-  <meta name="keywords" content="zhcHoward blog"> -->
+  <meta name="description" content="zhcHoward's blog">
+  {% case page.title %}
+    {% when 'Home' %}
+      <meta name="keywords" content="zhcHoward blog Howard Zhu">
+    {% when 'Post' %}
+      <meta name="keywords" content="{{ page.tags | join:"," }}">
+    {% else %}
+      <!--nothing-->
+  {% endcase %}
 
   <!-- Set render engine for 360 browser -->
   <meta name="renderer" content="webkit">
 
   <!-- No Baidu Siteapp-->
-  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
   <title>
     {% if page.title == "Home" %}
-      {{ site.title }} &middot; {{ site.tagline }}
+      {{ site.title }}
     {% else %}
-      {{ page.title }} &middot; {{ site.title }}
+      {{ site.title }} &middot; {{ page.title }}
     {% endif %}
   </title>
 
