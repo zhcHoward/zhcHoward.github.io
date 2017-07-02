@@ -21,6 +21,10 @@ header .tagline small {
   vertical-align: baseline;
 }
 
+header .navbar ul {
+  margin-left: 0.75rem;
+}
+
 /*
  ***************
  * main

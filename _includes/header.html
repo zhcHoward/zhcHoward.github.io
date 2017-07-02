@@ -2,10 +2,17 @@
   <div class="am-topbar">
     <div class="am-container">
       <h1 class="am-topbar-brand">
-        <a href="/">{{ site.title }}</a>
+      <a href="/">{{ site.title }}</a>
       </h1>
       <div class="am-fl tagline">
-          <small><a href="/about">{{ site.tagline }}</a></small>
+        <small>--{{ site.tagline }}</small>
+      </div>
+      <div class="am-collapse am-topbar-collapse navbar">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+          <li {% if page.title == "Home" %}class="am-active"{% endif %}><a href="/">Home</a></li>
+          <li {% if page.title == "Tags" %}class="am-active"{% endif %}><a href="/tags">Tags</a></li>
+          <li {% if page.title == "About" %}class="am-active"{% endif %}><a href="/about">About</a></li>
+        </ul>
       </div>
     </div>
   </div>
