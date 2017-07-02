@@ -2,3 +2,6 @@ _site/
 .sass-cache/
 .jekyll-metadata
 .idea/
+.ropeproject/
+.DS_Store
+

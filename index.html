@@ -1,38 +1,72 @@
 ---
-layout: default
+layout: base
 title: Home
 ---
 
-<div class="posts">
+<main class="am-container">
   {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ site.baseurl }}{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <span class="post-date">{{ post.date | date_to_string }}</span>
-
-    {{ post.content }}
+  <div class="am-panel am-panel-default">
+    <div class="am-panel-hd am-cf">
+      <h3 class="am-panel-title am-fl">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h3>
+      <small class="am-fr">{{ post.date | date_to_string }}</small>
+    </div>
+    <div class="am-panel-bd post-content">
+      {{ post.content }}
+    </div>
+    <div class="am-panel-footer">
+      {% for tag in post.tags %}
+        <small class="am-icon-tag">
+          <a href="/tags#{{ tag | slugify }}">{{tag}}</a>
+        </small>
+      {% endfor %}
+    </div>
   </div>
   {% endfor %}
-</div>
 
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ site.baseurl }}/page{{paginator.next_page}}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}/">Newer</a>
-    {% else %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}/page{{paginator.previous_page}}">Newer</a>
-    {% endif %}
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div>
+  <div class="pagination">
+    <ul class="am-pagination am-pagination-centered">
+      {% if paginator.previous_page %}
+      <li>
+      {% else %}
+      <li class="am-disabled">
+      {% endif %}
+        <!-- Jekyll doesn't generate /page1, we have to handle /page1 manually.
+             Details: https://jekyllrb.com/docs/pagination/-->
+        {% if paginator.previous_page == 1 %}
+        <a href="/">&laquo;</a>
+        {% else %}
+        <a href="{{ site.baseurl }}/page{{paginator.previous_page}}">&laquo;</a>
+        {% endif %}
+      </li>
+      
+      {% for page in (1..paginator.total_pages) %}
+        {% if paginator.page == page %}
+          <li class="am-active">
+        {% else %}
+          <li>
+        {% endif %}
+        <!-- Jekyll doesn't generate /page1, we have to handle /page1 manually.
+             Details: https://jekyllrb.com/docs/pagination/-->
+        {% if page == 1 %}
+          <a href="/">{{ page }}</a>
+        {% else %}
+          <a href="{{ site.baseurl }}/page{{ page }}">{{ page }}</a>
+        {% endif %}
+          </li>
+      {% endfor %}
+
+      {% if paginator.next_page %}
+      <li>
+      {% else %}
+      <li class="am-disabled">
+      {% endif %}
+      <a href="{{ site.baseurl }}/page{{paginator.next_page}}">&raquo;</a>
+      </li>
+    </ul>
+  </div>
+</main>
+
+
 
