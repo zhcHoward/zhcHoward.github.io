@@ -4,13 +4,11 @@ gems:
 # Setup
 title:               Hello World
 tagline:             'Howard Zhu'
-description:         'A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
 url:                 http://zhchoward.github.io
-paginate:            5
 
 # Where things are
 source:       .
-destination:  ./_site
+destination:  _site
 plugins_dir:  _plugins
 layouts_dir:  _layouts
 data_dir:     _data
@@ -54,6 +52,7 @@ show_dir_listing: false
 
 # Outputting
 permalink:     date
+paginate:      5
 paginate_path: /page:num
 timezone:      Asia/Shanghai
 
